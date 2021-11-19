@@ -127,8 +127,8 @@ public class SodaServiceTest {
         Soda expectedBeer = sodaMapper.toModel(expectedBeerDTO);
 
         //when
-        when(sodaRepository.findById(expectedBeerDTO.getId())).thenReturn(Optional.of(expectedBeer));
-        when(sodaRepository.save(expectedBeer)).thenReturn(expectedBeer);
+         when(sodaRepository.findById(expectedBeerDTO.getId())).thenReturn(Optional.of(expectedBeer));
+         when(sodaRepository.save(expectedBeer)).thenReturn(expectedBeer);
 
         int quantityToIncrement = 10;
         int expectedQuantityAfterIncrement = expectedBeerDTO.getQuantity() + quantityToIncrement;

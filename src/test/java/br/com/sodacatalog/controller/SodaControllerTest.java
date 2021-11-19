@@ -24,6 +24,7 @@ import java.util.Collections;
 import static br.com.sodacatalog.utils.JsonConvertionUtils.asJsonString;
 import static net.bytebuddy.matcher.ElementMatchers.is;
 import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -61,7 +62,7 @@ public class SodaControllerTest {
         when(sodaService.createSoda(sodaDTO)).thenReturn(sodaDTO);
 
 
-        mockMvc.perform(MockMvcRequestBuilders.post(SODA_API_URL_PATH)
+        mockMvc.perform(post(SODA_API_URL_PATH)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(asJsonString(sodaDTO)))
                 .andExpect(status().isCreated())
@@ -76,11 +77,10 @@ public class SodaControllerTest {
         SodaDTO sodaDTO = SodaDTOBuilder.builder().build().toSodaDTO();
         sodaDTO.setBrand(null);
 
-        mockMvc.perform(MockMvcRequestBuilders.post(SODA_API_URL_PATH)
+        mockMvc.perform(post(SODA_API_URL_PATH)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(asJsonString(sodaDTO)))
                         .andExpect(status().isBadRequest());
-
 
     }
 
@@ -172,7 +172,7 @@ public class SodaControllerTest {
 
             when(sodaService.increment(VALID_SODA_ID, quantityDTO.getQuantity())).thenReturn(sodaDTO);
 
-            mockMvc.perform(MockMvcRequestBuilders.get(SODA_API_URL_PATH + "/" + VALID_SODA_ID + SODA_API_SUBPATH_INCREMENT_URL)
+            mockMvc.perform(MockMvcRequestBuilders.patch(SODA_API_URL_PATH + "/" + VALID_SODA_ID + SODA_API_SUBPATH_INCREMENT_URL)
                             .contentType(MediaType.APPLICATION_JSON)
                             .content(asJsonString(quantityDTO))).andExpect(status().isOk())
                     .andExpect( jsonPath("$.name").value(sodaDTO.getName()))
