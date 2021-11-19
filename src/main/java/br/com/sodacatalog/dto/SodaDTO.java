@@ -1,7 +1,8 @@
 package br.com.sodacatalog.dto;
 
 import br.com.sodacatalog.enums.SodaType;
-import com.sun.istack.NotNull;
+
+import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
