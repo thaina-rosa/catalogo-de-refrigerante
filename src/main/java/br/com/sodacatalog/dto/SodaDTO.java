@@ -19,7 +19,9 @@ import javax.validation.constraints.Size;
 public class SodaDTO {
 
     private Long id;
+
     @NotNull
+
     @Size(min = 1, max = 200)
     private String name;
 

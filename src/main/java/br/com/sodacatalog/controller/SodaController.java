@@ -42,5 +42,9 @@ public class SodaController implements SodaControllerDocs {
     public void deleteById(@PathVariable Long id)throws SodaNotFoundException {
         sodaService.deleteById(id);
     }
+    @PatchMapping("/{id}/increment")
+    public SodaDTO increment(@PathVariable Long id, @RequestBody @Valid QuantityDTO quantityDTO) throws SodaNotFoundException, SodaStockExceededException {
+        return sodaService.increment(id, quantityDTO.getQuantity());
+    }
 
 }

@@ -5,9 +5,7 @@ package br.com.sodacatalog.entity;
 import br.com.sodacatalog.enums.SodaType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Generated;
 import lombok.NoArgsConstructor;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import javax.persistence.*;
 

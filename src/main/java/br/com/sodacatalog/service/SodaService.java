@@ -20,8 +20,10 @@ import java.util.stream.Collectors;
 public class SodaService {
 
     private final SodaRepository sodaRepository;
+
     private final SodaMapper sodaMapper = SodaMapper.INSTANCE;
-public SodaDTO createSoda(SodaDTO sodaDTO) throws SodaAlreadyRegisteredException{
+
+    public SodaDTO createSoda(SodaDTO sodaDTO) throws SodaAlreadyRegisteredException{
     verifyIfIsAlreadyRegistered(sodaDTO.getName());
     Soda soda = sodaMapper.toModel(sodaDTO);
     Soda savedSoda = sodaRepository.save(soda);
